@@ -1,0 +1,4 @@
+"0","#install.packages(""ggplot2"")"
+"0","library(ggplot2)"
+"2","package ¡¥ggplot2¡¦ was built under R version 3.3.3"
+"0","ggplot(totalPage,aes(x=type,y=likes_count))+geom_boxplot()+theme_bw() "

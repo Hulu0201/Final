@@ -1,0 +1,157 @@
+---
+title: "期末專題報告"
+output: 
+github_document:
+always_allow_html: yes
+       
+---
+
+## 題目: 勵志書暢銷的背後，吸引讀者的關鍵為何？
+
+## 分析議題背景:
+在這出版業人人喊苦,書店一間接著一間熄燈,勵志書籍為何能和工具書並駕齊驅甚至高居排行榜不下 
+Peter Su 是近年暢銷書作家,在百花齊放的社群上有著高人氣而出版的著作有著驚人的銷量.能在這出版業哀聲載道, 一刷2000本能賣完是萬幸的寒冬 還能賣出十萬本的書籍究竟是深藏著何種功夫?
+這些書暢銷的背後，讀者追尋的是什麼？
+
+## 分析動機:
+[話題》勵志散文：在暢銷的背後，讀者追尋的是什麼？](http://www.openbook.org.tw/article/20170225-249) 看到這篇文章覺得很有意思,也想到今年於台北國際書展看到許多勵志書放置在顯眼的平台上,走過去總會忍不住拿起來翻個幾頁或是將封面書腰上的文字快速閱讀過 
+網路上對於此類的書籍評價正反兩極 (正方認為能夠帶來舒緩;反方持無病呻吟的看法) 
+Peter Su能夠在短短一個月55刷衝破10萬本的銷量,不論內容是什麼,總是讓人很好奇,並想一探究竟
+
+## 資料介紹與來源
+假設:因為Peter Su是先由FB貼文引起關注而逐漸擁有許多粉絲,才得以出書.所以這裡並非分析他的著作,而是想透過其臉書內容來了解其為何能有極大的影響力,甚至是商機.
+  -資料為暢銷作家Peter Su的臉書貼文(從2016六月至今)
+```{r}
+#install.packages("Rfacebook")  
+token<-"EAACEdEose0cBAO8ijwDZBQxLVhWXHbTKRwbKTV5kYIPdZAVJpMK1tomAZCgt67SancZAkO3JRrZCU7wRjAwyBAbRKuF1pS82woRrPZBVZBSP55AhITzvTuiFbHjbMW3CEZBogAnjFZB2qzmhp8TKZCTUT5dsqanFNqNllXPqn33dZBu8sjjZCdiqOMFgBtAK3HSCdYMZD" #access token 
+library(Rfacebook) 
+lastDate<-Sys.Date() 
+DateVector<-seq(as.Date("2016-12-01"),lastDate,by="1 days")  
+DateVectorStr<-as.character(DateVector)
+totalPage<-NULL
+for(i in 1:(length(DateVectorStr)-1)){
+    tempPage<-getPage("petesonline", token,
+                since = DateVectorStr[i],
+                until = DateVectorStr[i+1])
+    totalPage<-rbind(totalPage,tempPage)
+}
+```
+```{r}
+nrow(totalPage) #有幾筆資料
+```
+
+## 格式
+```{r}
+#先將不需要的欄位清除
+totalPage$id <- NULL
+totalPage$from_id <- NULL
+totalPage$from_name <- NULL
+totalPage$link <- NULL
+#抓出發文時間
+totalPage$time <- substr(totalPage$created_time, start=12, stop=13) 
+str(totalPage)
+```
+
+## 分析議題&結果
+假設:按讚數.分享數.留言數量越多表示有較高的互動,能帶來的商機.關注也越高
+### 發文附圖的重要性
+發文不附圖 此風不可長
+風靡全球的Instagram,其特色就是圖片在搭配一些文字.
+```{r}
+#install.packages("ggplot2")
+library(ggplot2)
+ggplot(totalPage,aes(x=type,y=likes_count))+geom_boxplot()+theme_bw() 
+```
+
+### 發文好時機
+12-14多半是大家午休時間,此時發文是個聰明的選擇
+```{r}
+library(ggplot2)
+dotchart(as.numeric(totalPage$time))
+```
+
+### 不同發文類型的關注度
+```{r}
+mean(totalPage$likes_count)  #平均每篇貼文的讚數
+mean(totalPage$comments_count) #下方留言平均數
+mean(totalPage$shares_count) # 分享次篇貼文的次數
+range(totalPage$shares_count)
+
+library(dplyr)
+totalpage_test <- NULL
+totalpage_test <- totalPage
+totalpage_test %>% 
+  group_by(type) %>%   
+          summarize(num_likes = mean(likes_count),
+                    num_comment = mean(comments_count),
+                    num_share  = mean(shares_count)) %>%
+                  arrange(desc(num_likes))
+```
+##探索式資料分析
+```{r}
+#install.packages("jiebaR")
+library(jiebaR)
+cutter <- worker()
+#新增詞彙
+new_user_word(cutter,'並不是',"n")
+new_user_word(cutter,'有一天',"n")
+new_user_word(cutter,'點個頭',"n")
+new_user_word(cutter,'不一定',"n")
+new_user_word(cutter,'那一年',"n")
+new_user_word(cutter,'花了',"n")
+new_user_word(cutter,'不喜歡',"n")
+new_user_word(cutter,'一開始',"n")
+head(sort(table(cutter[totalPage$message]),decreasing = T))
+```
+##  什麼詞彙會刺激大家的額葉? 正能量或負能量?
+旅行 夢想 出發 等傳遞正能量的字眼
+```{r }
+#install.packages("rJava")
+#install.packages("Rwordseg", repos="http://R-Forge.R-project.org")
+#install.packages("tm")
+#install.packages("tmcn", repos="http://R-Forge.R-project.org", type="source")
+#install.packages("wordcloud")
+#install.packages("XML")
+#install.packages("RCurl")
+#install.packages("RPostgreSQL")
+#devtools::install_github("lchiffon/wordcloud2")
+options(java.home="C:\\Program Files\\Java\\jre1.8.0_60")
+#Sys.setenv(JAVA_HOME="C:\\Program Files\\Java\\jre1.8.0_60\\bin")
+library(tm)
+library(tmcn)
+library(rJava)
+library(Rwordseg) # 中文斷詞工具
+library(wordcloud)
+# 過濾器設定
+library(XML)
+library(wordcloud2)
+# 建立文本物件
+insertWords(toTrad(iconv(c("有一天","並不是","點個頭","不一定","那一年","花了","不喜歡","一開始"),
+                         "big5", "UTF-8"), rev=TRUE))
+db.stopwords<-data.frame(V1=c("了","的","https","goo","gl","peter","825","30","要","那就","com","tw","00"))
+db.stopwords$V1<-as.character(db.stopwords$V1)
+if (length(colnames(db.stopwords)) > 0) {
+  my.stopwords <- c(stopwordsCN(), stopwords("english"), db.stopwords[,1])
+} else {
+  my.stopwords <- c(stopwordsCN(), stopwords("english"))
+}
+head(segmentCN(totalPage$message))
+d<-data.frame(table(unlist(segmentCN(totalPage$message))),decreasing =T)
+names(d)<-c("word","freq")
+d$word<-as.character(d$word)
+wordcloud2(d[!d$word %in% my.stopwords & d$freq>5 & nchar(d$word)>1,], 
+           fontFamily = "Microsoft JhengHei", minRotation = -pi/2, maxRotation = -pi/2)
+```
+
+
+## 分析結果可能解決的問題
+-究竟是甚麼題材內容能夠讓大眾深深被吸引,造成一股旋風.
+  -或許就如"看到的人會幸福吧"的概念,勵志書以作者真實的經驗來幫讀者找到抒發情緒的出口，陪同讀者走過低潮
+  -一眼抓住讀者目光的詞彙
+  -出書代言葉配的商機 
+
+
+## 組員名單與分工
+胡茹芳—— 滷得很入味的魯蛇
+
+# 感謝老師如buzzer beater的救援
