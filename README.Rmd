@@ -21,13 +21,13 @@ Peter Su能夠在短短一個月55刷衝破10萬本的銷量,不論內容是什�
 
 ## 資料介紹與來源
 假設:因為Peter Su是先由FB貼文引起關注而逐漸擁有許多粉絲,才得以出書.所以這裡並非分析他的著作,而是想透過其臉書內容來了解其為何能有極大的影響力,甚至是商機.
-  -資料為暢銷作家Peter Su的臉書貼文(從2016六月至今)
+  -資料為暢銷作家Peter Su的臉書貼文
 ```{r}
 #install.packages("Rfacebook")  
-token<-"EAACEdEose0cBAM71XohHnX6jqBQrskMGFbhJK1s6XN3OKIQMF5ZCOgU7vf98OnSqviFuZC5QdOGlejiIGD9TshvsRGiAhtUKSznTAfYSTECCaIgcsjYhkkKd4DE6NaXtPQTLKio7Wprg9ZAPeVnxlg4ag8QZA7tTUUogUJZCGGcN65gxpuhj7caiJeZAPYscUZD" #access token 
+token<-"EAACEdEose0cBAEpZAs7Y9kTcrQhGeVCUoqmVH4Lgzk1LrDZBJHE2XsukVFoYZCcsTNETz2UlqjEMyoTJ96vtVyoHifM7Yy5hQfZCzZCcLNZAT6JbLxZAZCUpMNNZCiE45kYa3BRVRyV3SnR8ulO6TrnIh72rZBAnC55JvU1YwzjRXHk9xl9hKuFrvOH0jUvBgrH7IZD" #access token 
 library(Rfacebook) 
 lastDate<-Sys.Date() 
-DateVector<-seq(as.Date("2017-05-01"),lastDate,by="1 days")  
+DateVector<-seq(as.Date("2017-02-01"),lastDate,by="7 days")  
 DateVectorStr<-as.character(DateVector)
 totalPage<-NULL
 for(i in 1:(length(DateVectorStr)-1)){
@@ -35,8 +35,10 @@ for(i in 1:(length(DateVectorStr)-1)){
                 since = DateVectorStr[i],
                 until = DateVectorStr[i+1])
     totalPage<-rbind(totalPage,tempPage)
+     Sys.sleep(2)
 }
 ```
+
 ```{r}
 nrow(totalPage) #有幾筆資料
 ```
@@ -55,7 +57,7 @@ str(totalPage)
 
 ## 分析議題&結果
 假設:按讚數.分享數.留言數量越多表示有較高的互動,能帶來的商機.關注也越高
-### 發文附圖的重要性
+### 1.發文附圖的重要性
 發文不附圖 此風不可長
 風靡全球的Instagram,其特色就是圖片在搭配一些文字.
 ```{r}
@@ -63,13 +65,15 @@ str(totalPage)
 library(ggplot2)
 ggplot(totalPage,aes(x=type,y=likes_count))+geom_boxplot()+theme_bw() 
 ```
+![](https://drive.google.com/open?id=0Bwv7NFD7P2fyWXVGaXJDSzJ2bzQ)
 
-### 發文好時機
+### 2.發文好時機
 12-14多半是大家午休時間,此時發文是個聰明的選擇
 ```{r}
 library(ggplot2)
 dotchart(as.numeric(totalPage$time))
 ```
+![](https://drive.google.com/open?id=0Bwv7NFD7P2fyZDhMMmJnVVZoUEE)
 
 ### 不同發文類型的關注度
 ```{r}
@@ -102,7 +106,7 @@ new_user_word(cutter,'那一年',"n")
 new_user_word(cutter,'花了',"n")
 new_user_word(cutter,'不喜歡',"n")
 new_user_word(cutter,'一開始',"n")
-head(sort(table(cutter[totalPage$message]),decreasing = T))
+head(sort(table(cutter[totalPage$message]),decreasing = T),3)
 ```
 ##  什麼詞彙會刺激大家的額葉? 正能量或負能量?
 旅行 夢想 出發 等傳遞正能量的字眼
@@ -118,6 +122,8 @@ head(sort(table(cutter[totalPage$message]),decreasing = T))
 #devtools::install_github("lchiffon/wordcloud2")
 options(java.home="C:\\Program Files\\Java\\jre1.8.0_60")
 #Sys.setenv(JAVA_HOME="C:\\Program Files\\Java\\jre1.8.0_60\\bin")
+#install.packages("htmlwidgets")
+#devtools::install_github('ramnathv/htmlwidgets')
 library(tm)
 library(tmcn)
 library(rJava)
@@ -136,6 +142,8 @@ if (length(colnames(db.stopwords)) > 0) {
 } else {
   my.stopwords <- c(stopwordsCN(), stopwords("english"))
 }
+totalPage$message<- enc2utf8(totalPage$message)
+totalPage$message<- totalPage$message[Encoding(totalPage$message)!='unknown']
 head(segmentCN(totalPage$message))
 d<-data.frame(table(unlist(segmentCN(totalPage$message))),decreasing =T)
 names(d)<-c("word","freq")
@@ -143,7 +151,7 @@ d$word<-as.character(d$word)
 wordcloud2(d[!d$word %in% my.stopwords & d$freq>5 & nchar(d$word)>1,], 
            fontFamily = "Microsoft JhengHei", minRotation = -pi/2, maxRotation = -pi/2)
 ```
-
+![](D:\DocumentsAndSettings\Pictures\wordcloud2.PNG)
 
 ## 分析結果可能解決的問題
 -究竟是甚麼題材內容能夠讓大眾深深被吸引,造成一股旋風.
@@ -154,5 +162,3 @@ wordcloud2(d[!d$word %in% my.stopwords & d$freq>5 & nchar(d$word)>1,],
 
 ## 組員名單與分工
 胡茹芳—— 滷得很入味的魯蛇
-
-# 感謝老師如buzzer beater的救援

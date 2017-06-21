@@ -1,0 +1,21 @@
+"0","head(sort(table(cutter[totalPage$message]),decreasing = T),3)
+"
+"1","
+"
+"1","  的 "
+"1","  你 "
+"1","  了 "
+"1","
+"
+"1","1267 "
+"1"," 443 "
+"1"," 313 "
+"1","
+"
+"2","Warning message:
+"
+"2","In strsplit(code, ""\n"", fixed = TRUE) :"
+"2","
+ "
+"2"," input string 1 is invalid in this locale
+"
