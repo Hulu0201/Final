@@ -1,8 +1,9 @@
 ---
 title: "期末專題報告"
-output: 
-github_document:
-always_allow_html: yes
+output:
+   html_document:
+      self_contained: false
+      keep_md: true
        
 ---
 
@@ -23,10 +24,10 @@ Peter Su能夠在短短一個月55刷衝破10萬本的銷量,不論內容是什�
   -資料為暢銷作家Peter Su的臉書貼文(從2016六月至今)
 ```{r}
 #install.packages("Rfacebook")  
-token<-"EAACEdEose0cBAO8ijwDZBQxLVhWXHbTKRwbKTV5kYIPdZAVJpMK1tomAZCgt67SancZAkO3JRrZCU7wRjAwyBAbRKuF1pS82woRrPZBVZBSP55AhITzvTuiFbHjbMW3CEZBogAnjFZB2qzmhp8TKZCTUT5dsqanFNqNllXPqn33dZBu8sjjZCdiqOMFgBtAK3HSCdYMZD" #access token 
+token<-"EAACEdEose0cBAM71XohHnX6jqBQrskMGFbhJK1s6XN3OKIQMF5ZCOgU7vf98OnSqviFuZC5QdOGlejiIGD9TshvsRGiAhtUKSznTAfYSTECCaIgcsjYhkkKd4DE6NaXtPQTLKio7Wprg9ZAPeVnxlg4ag8QZA7tTUUogUJZCGGcN65gxpuhj7caiJeZAPYscUZD" #access token 
 library(Rfacebook) 
 lastDate<-Sys.Date() 
-DateVector<-seq(as.Date("2016-12-01"),lastDate,by="1 days")  
+DateVector<-seq(as.Date("2017-05-01"),lastDate,by="1 days")  
 DateVectorStr<-as.character(DateVector)
 totalPage<-NULL
 for(i in 1:(length(DateVectorStr)-1)){
