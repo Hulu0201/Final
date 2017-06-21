@@ -101,6 +101,7 @@ totalpage_test %>%
 
 ##  什麼詞彙會刺激大家的額葉? 正能量或負能量?
 "旅行" "夢想" "出發"" 等傳遞正能量的字眼,或許這些詞彙(故事)能減少生活的厭世感
+![](https://drive.google.com/open?id=0Bwv7NFD7P2fyUzZOSkVCWDJKaEU)
 ```{r }
 #install.packages("rJava")
 #install.packages("Rwordseg", repos="http://R-Forge.R-project.org")
@@ -142,7 +143,6 @@ d$word<-as.character(d$word)
 wordcloud2(d[!d$word %in% my.stopwords & d$freq>5 & nchar(d$word)>1,], 
            fontFamily = "Microsoft JhengHei", minRotation = -pi/2, maxRotation = -pi/2)
 ```
-![wordcloud2](https://drive.google.com/open?id=0Bwv7NFD7P2fyUzZOSkVCWDJKaEU)
 
 ## 分析結果可能解決的問題 
 
