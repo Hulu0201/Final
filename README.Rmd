@@ -70,7 +70,7 @@ str(totalPage)
 library(ggplot2)
 ggplot(totalPage,aes(x=type,y=likes_count))+geom_boxplot()+theme_bw() 
 ```
-![](https://drive.google.com/open?id=0Bwv7NFD7P2fyWXVGaXJDSzJ2bzQ)
+
 
 ### 2.發文好時機
 12-14多半是大家午休時間,此時發文是個聰明的選擇
@@ -78,7 +78,7 @@ ggplot(totalPage,aes(x=type,y=likes_count))+geom_boxplot()+theme_bw()
 library(ggplot2)
 dotchart(as.numeric(totalPage$time))
 ```
-![](https://drive.google.com/open?id=0Bwv7NFD7P2fyZDhMMmJnVVZoUEE)
+
 
 ### 不同發文類型的關注度
 ```{r}
@@ -142,7 +142,7 @@ d$word<-as.character(d$word)
 wordcloud2(d[!d$word %in% my.stopwords & d$freq>5 & nchar(d$word)>1,], 
            fontFamily = "Microsoft JhengHei", minRotation = -pi/2, maxRotation = -pi/2)
 ```
-![](https://drive.google.com/open?id=0Bwv7NFD7P2fyUzZOSkVCWDJKaEU)
+![](D:/DocumentsAndSettings/Pictures/wordcloud2.PNG)
 
 ## 分析結果可能解決的問題 
 *究竟是甚麼題材內容能夠讓大眾深深被吸引,造成一股旋風.
@@ -153,4 +153,4 @@ wordcloud2(d[!d$word %in% my.stopwords & d$freq>5 & nchar(d$word)>1,],
 ## 組員名單與分工
 胡茹芳—— 滷得很入味的魯蛇
 
-![](https://drive.google.com/open?id=0Bwv7NFD7P2fyUzZOSkVCWDJKaEU)
+[wordcloud](https://drive.google.com/open?id=0Bwv7NFD7P2fyUzZOSkVCWDJKaEU)

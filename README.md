@@ -138,7 +138,7 @@ ggplot(totalPage,aes(x=type,y=likes_count))+geom_boxplot()+theme_bw()
 ```
 
 ![](README_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
-![](https://drive.google.com/open?id=0Bwv7NFD7P2fyWXVGaXJDSzJ2bzQ)
+
 
 ### 2.發文好時機
 12-14多半是大家午休時間,此時發文是個聰明的選擇
@@ -149,7 +149,7 @@ dotchart(as.numeric(totalPage$time))
 ```
 
 ![](README_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
-![](https://drive.google.com/open?id=0Bwv7NFD7P2fyZDhMMmJnVVZoUEE)
+
 
 ### 不同發文類型的關注度
 
@@ -158,7 +158,7 @@ mean(totalPage$likes_count)  #平均每篇貼文的讚數
 ```
 
 ```
-## [1] 7097.316
+## [1] 7097.342
 ```
 
 ```r
@@ -174,7 +174,7 @@ mean(totalPage$shares_count) # 分享次篇貼文的次數
 ```
 
 ```
-## [1] 345.2193
+## [1] 345.2281
 ```
 
 ```r
@@ -225,7 +225,7 @@ totalpage_test %>%
 ## # A tibble: 3 × 4
 ##    type num_likes num_comment num_share
 ##   <chr>     <dbl>       <dbl>     <dbl>
-## 1 photo  7891.570    60.15116  362.7093
+## 1 photo  7891.605    60.15116  362.7209
 ## 2  link  7347.417    50.00000  564.2500
 ## 3 video  2640.625    56.43750   86.9375
 ```
@@ -411,9 +411,9 @@ wordcloud2(d[!d$word %in% my.stopwords & d$freq>5 & nchar(d$word)>1,],
            fontFamily = "Microsoft JhengHei", minRotation = -pi/2, maxRotation = -pi/2)
 ```
 
-<!--html_preserve--><div id="htmlwidget-0c68211bff9ce8a8b2a9" style="width:672px;height:480px;" class="wordcloud2 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-0c68211bff9ce8a8b2a9">{"x":{"word":["bossini","Instagram","MO","PeterSu","Weibo","一件","一段","一個","一起","一樣","十點","下次","大家","不再","什麼","今天","分享","方式","日子","世界","出發","永遠","生命","生活","因為","地方","有人","至少","你們","希望","快樂","我們","沒有","身邊","事情","其實","或許","朋友","狀態","知道","長大","很多","活動","相信","看看","美好","美麗","面對","首播","旅行","時候","時間","海洋","真的","討厭","停止","晚上","現在","許多","這次","這個","這樣","陪伴","喜歡","曾經","森林","無法","無論","發生","感受","路上","夢想","對方","認識","需要","靜靜的","離開","關係","願意"],"freq":[9,75,9,8,7,6,8,25,42,9,7,6,11,9,16,12,7,6,6,34,14,15,8,9,18,8,6,6,8,9,7,38,21,6,7,7,12,14,9,7,9,9,6,7,10,10,6,8,7,33,12,12,6,9,6,7,15,7,6,10,7,9,9,25,7,7,11,10,8,7,8,8,7,7,6,6,9,10,6],"fontFamily":"Microsoft JhengHei","fontWeight":"bold","color":"random-dark","minSize":0,"weightFactor":2.4,"backgroundColor":"white","gridSize":0,"minRotation":-1.5707963267949,"maxRotation":-1.5707963267949,"shuffle":true,"rotateRatio":0.4,"shape":"circle","ellipticity":0.65,"figBase64":null,"hover":null},"evals":[],"jsHooks":{"render":[{"code":"function(el,x){\n                        console.log(123);\n                        if(!iii){\n                          window.location.reload();\n                          iii = False;\n\n                        }\n  }","data":null}]}}</script><!--/html_preserve-->
-![](https://drive.google.com/open?id=0Bwv7NFD7P2fyUzZOSkVCWDJKaEU)
+<!--html_preserve--><div id="htmlwidget-3f0fb5ac5ed628362df5" style="width:672px;height:480px;" class="wordcloud2 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3f0fb5ac5ed628362df5">{"x":{"word":["bossini","Instagram","MO","PeterSu","Weibo","一件","一段","一個","一起","一樣","十點","下次","大家","不再","什麼","今天","分享","方式","日子","世界","出發","永遠","生命","生活","因為","地方","有人","至少","你們","希望","快樂","我們","沒有","身邊","事情","其實","或許","朋友","狀態","知道","長大","很多","活動","相信","看看","美好","美麗","面對","首播","旅行","時候","時間","海洋","真的","討厭","停止","晚上","現在","許多","這次","這個","這樣","陪伴","喜歡","曾經","森林","無法","無論","發生","感受","路上","夢想","對方","認識","需要","靜靜的","離開","關係","願意"],"freq":[9,75,9,8,7,6,8,25,42,9,7,6,11,9,16,12,7,6,6,34,14,15,8,9,18,8,6,6,8,9,7,38,21,6,7,7,12,14,9,7,9,9,6,7,10,10,6,8,7,33,12,12,6,9,6,7,15,7,6,10,7,9,9,25,7,7,11,10,8,7,8,8,7,7,6,6,9,10,6],"fontFamily":"Microsoft JhengHei","fontWeight":"bold","color":"random-dark","minSize":0,"weightFactor":2.4,"backgroundColor":"white","gridSize":0,"minRotation":-1.5707963267949,"maxRotation":-1.5707963267949,"shuffle":true,"rotateRatio":0.4,"shape":"circle","ellipticity":0.65,"figBase64":null,"hover":null},"evals":[],"jsHooks":{"render":[{"code":"function(el,x){\n                        console.log(123);\n                        if(!iii){\n                          window.location.reload();\n                          iii = False;\n\n                        }\n  }","data":null}]}}</script><!--/html_preserve-->
+![](D:/DocumentsAndSettings/Pictures/wordcloud2.PNG)
 
 ## 分析結果可能解決的問題 
 *究竟是甚麼題材內容能夠讓大眾深深被吸引,造成一股旋風.
@@ -424,4 +424,4 @@ wordcloud2(d[!d$word %in% my.stopwords & d$freq>5 & nchar(d$word)>1,],
 ## 組員名單與分工
 胡茹芳—— 滷得很入味的魯蛇
 
-![](https://drive.google.com/open?id=0Bwv7NFD7P2fyUzZOSkVCWDJKaEU)
+[wordcloud](https://drive.google.com/open?id=0Bwv7NFD7P2fyUzZOSkVCWDJKaEU)
