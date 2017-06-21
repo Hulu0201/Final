@@ -10,9 +10,9 @@ output:
 ## 題目: 勵志書暢銷的背後，吸引讀者的關鍵為何？
 
 ## 分析議題背景:
-在這出版業人人喊苦,書店一間接著一間熄燈,勵志書籍為何能和工具書並駕齊驅甚至高居排行榜不下 
-Peter Su 是近年暢銷書作家,在百花齊放的社群上有著高人氣而出版的著作有著驚人的銷量.能在這出版業哀聲載道, 一刷2000本能賣完是萬幸的寒冬 還能賣出十萬本的書籍究竟是深藏著何種功夫?
-這些書暢銷的背後，讀者追尋的是什麼？
+在這出版業人人喊苦,書店一間接著一間熄燈(如女書店)的時代,勵志書籍卻能和工具書並駕齊驅甚至高居排行榜不下 
+  Peter Su 是近年暢銷書作家,在百花齊放的社群上有著高人氣而出版的著作有著驚人的銷量           現今出書一刷2000本能賣完是萬幸的,十萬本的銷量更是遙不可及
+  文字雲是關鍵詞的視覺化描述，用於匯總用戶生成的標籤或一個網站的文字內容。標籤一般是獨立的詞彙，常常按字母順 序排列，其重要程度又能通過改變字體大小或顏色來表現
 
 ## 分析動機:
 [話題》勵志散文：在暢銷的背後，讀者追尋的是什麼？](http://www.openbook.org.tw/article/20170225-249) 看到這篇文章覺得很有意思,也想到今年於台北國際書展看到許多勵志書放置在顯眼的平台上,走過去總會忍不住拿起來翻個幾頁或是將封面書腰上的文字快速閱讀過 
@@ -24,10 +24,10 @@ Peter Su能夠在短短一個月55刷衝破10萬本的銷量,不論內容是什�
   -資料為暢銷作家Peter Su的臉書貼文
 ```{r}
 #install.packages("Rfacebook")  
-token<-"EAACEdEose0cBAEpZAs7Y9kTcrQhGeVCUoqmVH4Lgzk1LrDZBJHE2XsukVFoYZCcsTNETz2UlqjEMyoTJ96vtVyoHifM7Yy5hQfZCzZCcLNZAT6JbLxZAZCUpMNNZCiE45kYa3BRVRyV3SnR8ulO6TrnIh72rZBAnC55JvU1YwzjRXHk9xl9hKuFrvOH0jUvBgrH7IZD" #access token 
+token<-"EAACEdEose0cBAHZCmmPg8AZAE4VpI2ayMdeAQJTHM3wagNkFAaBDXZCVb9WZBSDAKwBZC3NlDPCiZCJYmYBaDhz9PlaKpqdJU4YEoZCwnJrtBSv8dJy3tiVqsfPM7UBF9Mltmw2s5kharJrtHefE94DJOzNne2QMMHUsx6YjJJf5tRov9lSvWEywmSuRUmj1lsZD" #access token 
 library(Rfacebook) 
 lastDate<-Sys.Date() 
-DateVector<-seq(as.Date("2017-02-01"),lastDate,by="7 days")  
+DateVector<-seq(as.Date("2017-01-21"),lastDate,by="7 days")  
 DateVectorStr<-as.character(DateVector)
 totalPage<-NULL
 for(i in 1:(length(DateVectorStr)-1)){
@@ -44,6 +44,7 @@ nrow(totalPage) #有幾筆資料
 ```
 
 ## 格式
+data.frame 
 ```{r}
 #先將不需要的欄位清除
 totalPage$id <- NULL
@@ -58,8 +59,8 @@ str(totalPage)
 ## 分析議題&結果
 假設:按讚數.分享數.留言數量越多表示有較高的互動,能帶來的商機.關注也越高
 ### 1.發文附圖的重要性
-發文不附圖 此風不可長
-風靡全球的Instagram,其特色就是圖片在搭配一些文字.
+"發文不附圖 此風不可長"就算圖文不符,發文附圖才能引起關注
+風靡全球的Instagram,其特色就是先以圖片引人注意接著看到下方的文字內容.
 ```{r}
 #install.packages("ggplot2")
 library(ggplot2)
@@ -92,24 +93,9 @@ totalpage_test %>%
                     num_share  = mean(shares_count)) %>%
                   arrange(desc(num_likes))
 ```
-##探索式資料分析
-```{r}
-#install.packages("jiebaR")
-library(jiebaR)
-cutter <- worker()
-#新增詞彙
-new_user_word(cutter,'並不是',"n")
-new_user_word(cutter,'有一天',"n")
-new_user_word(cutter,'點個頭',"n")
-new_user_word(cutter,'不一定',"n")
-new_user_word(cutter,'那一年',"n")
-new_user_word(cutter,'花了',"n")
-new_user_word(cutter,'不喜歡',"n")
-new_user_word(cutter,'一開始',"n")
-head(sort(table(cutter[totalPage$message]),decreasing = T),3)
-```
+
 ##  什麼詞彙會刺激大家的額葉? 正能量或負能量?
-旅行 夢想 出發 等傳遞正能量的字眼
+"旅行" "夢想" "出發"" 等傳遞正能量的字眼,或許這些詞彙(故事)能減少生活的厭世感
 ```{r }
 #install.packages("rJava")
 #install.packages("Rwordseg", repos="http://R-Forge.R-project.org")
@@ -120,14 +106,14 @@ head(sort(table(cutter[totalPage$message]),decreasing = T),3)
 #install.packages("RCurl")
 #install.packages("RPostgreSQL")
 #devtools::install_github("lchiffon/wordcloud2")
-options(java.home="C:\\Program Files\\Java\\jre1.8.0_60")
-#Sys.setenv(JAVA_HOME="C:\\Program Files\\Java\\jre1.8.0_60\\bin")
 #install.packages("htmlwidgets")
 #devtools::install_github('ramnathv/htmlwidgets')
+options(java.home="C:\\Program Files\\Java\\jre1.8.0_60")
+#Sys.setenv(JAVA_HOME="C:\\Program Files\\Java\\jre1.8.0_60\\bin")
 library(tm)
 library(tmcn)
 library(rJava)
-library(Rwordseg) # 中文斷詞工具
+library(Rwordseg) # 斷詞工具
 library(wordcloud)
 # 過濾器設定
 library(XML)
@@ -151,13 +137,13 @@ d$word<-as.character(d$word)
 wordcloud2(d[!d$word %in% my.stopwords & d$freq>5 & nchar(d$word)>1,], 
            fontFamily = "Microsoft JhengHei", minRotation = -pi/2, maxRotation = -pi/2)
 ```
-![](D:\DocumentsAndSettings\Pictures\wordcloud2.PNG)
+![wordcloud2](https://drive.google.com/open?id=0Bwv7NFD7P2fyUzZOSkVCWDJKaEU)
 
 ## 分析結果可能解決的問題
--究竟是甚麼題材內容能夠讓大眾深深被吸引,造成一股旋風.
+  -究竟是甚麼題材內容能夠讓大眾深深被吸引,造成一股旋風.
   -或許就如"看到的人會幸福吧"的概念,勵志書以作者真實的經驗來幫讀者找到抒發情緒的出口，陪同讀者走過低潮
   -一眼抓住讀者目光的詞彙
-  -出書代言葉配的商機 
+  -從中可以察覺到出書代言葉配的商機並非偶然 
 
 
 ## 組員名單與分工
