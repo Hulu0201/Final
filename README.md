@@ -233,7 +233,6 @@ totalpage_test %>%
 
 ##  什麼詞彙會刺激大家的額葉? 正能量或負能量?
 "旅行" "夢想" "出發"" 等傳遞正能量的字眼,或許這些詞彙(故事)能減少生活的厭世感
-![](https://drive.google.com/open?id=0Bwv7NFD7P2fyUzZOSkVCWDJKaEU)
 
 ```r
 #install.packages("rJava")
@@ -412,11 +411,11 @@ wordcloud2(d[!d$word %in% my.stopwords & d$freq>5 & nchar(d$word)>1,],
            fontFamily = "Microsoft JhengHei", minRotation = -pi/2, maxRotation = -pi/2)
 ```
 
-<!--html_preserve--><div id="htmlwidget-b9a55fe02f737c8a864f" style="width:672px;height:480px;" class="wordcloud2 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-b9a55fe02f737c8a864f">{"x":{"word":["bossini","Instagram","MO","PeterSu","Weibo","一件","一段","一個","一起","一樣","十點","下次","大家","不再","什麼","今天","分享","方式","日子","世界","出發","永遠","生命","生活","因為","地方","有人","至少","你們","希望","快樂","我們","沒有","身邊","事情","其實","或許","朋友","狀態","知道","長大","很多","活動","相信","看看","美好","美麗","面對","首播","旅行","時候","時間","海洋","真的","討厭","停止","晚上","現在","許多","這次","這個","這樣","陪伴","喜歡","曾經","森林","無法","無論","發生","感受","路上","夢想","對方","認識","需要","靜靜的","離開","關係","願意"],"freq":[9,75,9,8,7,6,8,25,42,9,7,6,11,9,16,12,7,6,6,34,14,15,8,9,18,8,6,6,8,9,7,38,21,6,7,7,12,14,9,7,9,9,6,7,10,10,6,8,7,33,12,12,6,9,6,7,15,7,6,10,7,9,9,25,7,7,11,10,8,7,8,8,7,7,6,6,9,10,6],"fontFamily":"Microsoft JhengHei","fontWeight":"bold","color":"random-dark","minSize":0,"weightFactor":2.4,"backgroundColor":"white","gridSize":0,"minRotation":-1.5707963267949,"maxRotation":-1.5707963267949,"shuffle":true,"rotateRatio":0.4,"shape":"circle","ellipticity":0.65,"figBase64":null,"hover":null},"evals":[],"jsHooks":{"render":[{"code":"function(el,x){\n                        console.log(123);\n                        if(!iii){\n                          window.location.reload();\n                          iii = False;\n\n                        }\n  }","data":null}]}}</script><!--/html_preserve-->
+<!--html_preserve--><div id="htmlwidget-0c68211bff9ce8a8b2a9" style="width:672px;height:480px;" class="wordcloud2 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0c68211bff9ce8a8b2a9">{"x":{"word":["bossini","Instagram","MO","PeterSu","Weibo","一件","一段","一個","一起","一樣","十點","下次","大家","不再","什麼","今天","分享","方式","日子","世界","出發","永遠","生命","生活","因為","地方","有人","至少","你們","希望","快樂","我們","沒有","身邊","事情","其實","或許","朋友","狀態","知道","長大","很多","活動","相信","看看","美好","美麗","面對","首播","旅行","時候","時間","海洋","真的","討厭","停止","晚上","現在","許多","這次","這個","這樣","陪伴","喜歡","曾經","森林","無法","無論","發生","感受","路上","夢想","對方","認識","需要","靜靜的","離開","關係","願意"],"freq":[9,75,9,8,7,6,8,25,42,9,7,6,11,9,16,12,7,6,6,34,14,15,8,9,18,8,6,6,8,9,7,38,21,6,7,7,12,14,9,7,9,9,6,7,10,10,6,8,7,33,12,12,6,9,6,7,15,7,6,10,7,9,9,25,7,7,11,10,8,7,8,8,7,7,6,6,9,10,6],"fontFamily":"Microsoft JhengHei","fontWeight":"bold","color":"random-dark","minSize":0,"weightFactor":2.4,"backgroundColor":"white","gridSize":0,"minRotation":-1.5707963267949,"maxRotation":-1.5707963267949,"shuffle":true,"rotateRatio":0.4,"shape":"circle","ellipticity":0.65,"figBase64":null,"hover":null},"evals":[],"jsHooks":{"render":[{"code":"function(el,x){\n                        console.log(123);\n                        if(!iii){\n                          window.location.reload();\n                          iii = False;\n\n                        }\n  }","data":null}]}}</script><!--/html_preserve-->
+![](https://drive.google.com/open?id=0Bwv7NFD7P2fyUzZOSkVCWDJKaEU)
 
 ## 分析結果可能解決的問題 
-
 *究竟是甚麼題材內容能夠讓大眾深深被吸引,造成一股旋風.
 *或許就如"看到的人會幸福吧"的概念,勵志書以作者真實的經驗來幫讀者找到抒發情緒的出口，陪同讀者走過低潮
 *一眼抓住讀者目光的詞彙
@@ -424,3 +423,5 @@ wordcloud2(d[!d$word %in% my.stopwords & d$freq>5 & nchar(d$word)>1,],
 
 ## 組員名單與分工
 胡茹芳—— 滷得很入味的魯蛇
+
+![](https://drive.google.com/open?id=0Bwv7NFD7P2fyUzZOSkVCWDJKaEU)
