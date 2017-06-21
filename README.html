@@ -130,15 +130,24 @@ $(document).ready(function () {
 </div>
 <div class="section level2">
 <h2>分析議題背景:</h2>
-<p>在這出版業人人喊苦,書店一間接著一間熄燈(如女書店)的時代,勵志書籍卻能和工具書並駕齊驅甚至高居排行榜不下 Peter Su 是近年暢銷書作家,在百花齊放的社群上有著高人氣而出版的著作有著驚人的銷量 現今出書一刷2000本能賣完是萬幸的,十萬本的銷量更是遙不可及 文字雲是關鍵詞的視覺化描述，用於匯總用戶生成的標籤或一個網站的文字內容。標籤一般是獨立的詞彙，常常按字母順 序排列，其重要程度又能通過改變字體大小或顏色來表現</p>
+<ul>
+<li>在這出版業人人喊苦,書店一間接著一間熄燈(如女書店)的時代,勵志書籍卻能和工具書並駕齊驅甚至高居排行榜不下</li>
+<li>Peter Su 是近年暢銷書作家,在百花齊放的社群上有著高人氣而出版的著作有著驚人的銷量<br />
+</li>
+<li>文字雲是關鍵詞的視覺化描述，用於匯總用戶生成的標籤或一個網站的文字內容。標籤一般是獨立的詞彙，常常按字母順 序排列，其重要程度又能通過改變字體大小或顏色來表現(維基百科)</li>
+<li>現今出書一刷2000本能賣完是萬幸的,十萬本的銷量更是遙不可及</li>
+</ul>
 </div>
 <div class="section level2">
 <h2>分析動機:</h2>
-<p><a href="http://www.openbook.org.tw/article/20170225-249">話題》勵志散文：在暢銷的背後，讀者追尋的是什麼？</a> 看到這篇文章覺得很有意思,也想到今年於台北國際書展看到許多勵志書放置在顯眼的平台上,走過去總會忍不住拿起來翻個幾頁或是將封面書腰上的文字快速閱讀過 網路上對於此類的書籍評價正反兩極 (正方認為能夠帶來舒緩;反方持無病呻吟的看法) Peter Su能夠在短短一個月55刷衝破10萬本的銷量,不論內容是什麼,總是讓人很好奇,並想一探究竟</p>
+<p><a href="http://www.openbook.org.tw/article/20170225-249">話題》勵志散文：在暢銷的背後，讀者追尋的是什麼？</a> -看到這篇文章覺得很有意思,也想到今年於台北國際書展看到許多勵志書放置在顯眼的平台上,走過去總會忍不住拿起來翻個幾頁或是將封面書腰上的文字快速閱讀過 -網路上對於此類的書籍評價正反兩極 (正方認為能夠帶來舒緩;反方持無病呻吟的看法) -Peter Su能夠在短短一個月55刷衝破10萬本的銷量,不論內容是什麼,總是讓人很好奇,並想一探究竟</p>
 </div>
 <div class="section level2">
 <h2>資料介紹與來源</h2>
-<p>假設:因為Peter Su是先由FB貼文引起關注而逐漸擁有許多粉絲,才得以出書.所以這裡並非分析他的著作,而是想透過其臉書內容來了解其為何能有極大的影響力,甚至是商機. -資料為暢銷作家Peter Su的臉書貼文</p>
+<ul>
+<li>假設:因為Peter Su是先由FB貼文引起關注而逐漸擁有許多粉絲,才得以出書.所以這裡並非分析他的著作,而是想透過其臉書內容來了解其為何能有極大的影響力,甚至是商機.</li>
+<li>資料為暢銷作家Peter Su的臉書貼文</li>
+</ul>
 <pre class="r"><code>#install.packages(&quot;Rfacebook&quot;)  
 token&lt;-&quot;EAACEdEose0cBAHZCmmPg8AZAE4VpI2ayMdeAQJTHM3wagNkFAaBDXZCVb9WZBSDAKwBZC3NlDPCiZCJYmYBaDhz9PlaKpqdJU4YEoZCwnJrtBSv8dJy3tiVqsfPM7UBF9Mltmw2s5kharJrtHefE94DJOzNne2QMMHUsx6YjJJf5tRov9lSvWEywmSuRUmj1lsZD&quot; #access token 
 library(Rfacebook) </code></pre>
@@ -153,7 +162,7 @@ library(Rfacebook) </code></pre>
 ## 
 ##     getGroup</code></pre>
 <pre class="r"><code>lastDate&lt;-Sys.Date() 
-DateVector&lt;-seq(as.Date(&quot;2017-01-21&quot;),lastDate,by=&quot;7 days&quot;)  
+DateVector&lt;-seq(as.Date(&quot;2017-01-01&quot;),lastDate,by=&quot;7 days&quot;)  
 DateVectorStr&lt;-as.character(DateVector)
 totalPage&lt;-NULL
 for(i in 1:(length(DateVectorStr)-1)){
@@ -163,9 +172,11 @@ for(i in 1:(length(DateVectorStr)-1)){
     totalPage&lt;-rbind(totalPage,tempPage)
      Sys.sleep(2)
 }</code></pre>
-<pre><code>## 9 posts 2 posts 3 posts 7 posts 5 posts 6 posts 4 posts 1 posts 7 posts 6 posts 4 posts 10 posts 2 posts 9 posts 5 posts 5 posts 4 posts 4 posts 4 posts 3 posts 5 posts</code></pre>
+<pre><code>## 0 posts</code></pre>
+<pre><code>## No public posts were found : petesonline</code></pre>
+<pre><code>## 6 posts 3 posts 7 posts 3 posts 2 posts 7 posts 6 posts 5 posts 4 posts 2 posts 7 posts 5 posts 5 posts 9 posts 3 posts 8 posts 6 posts 4 posts 4 posts 5 posts 4 posts 3 posts 6 posts</code></pre>
 <pre class="r"><code>nrow(totalPage) #有幾筆資料</code></pre>
-<pre><code>## [1] 105</code></pre>
+<pre><code>## [1] 114</code></pre>
 </div>
 <div class="section level2">
 <h2>格式</h2>
@@ -178,19 +189,23 @@ totalPage$link &lt;- NULL
 #抓出發文時間
 totalPage$time &lt;- substr(totalPage$created_time, start=12, stop=13) 
 str(totalPage)</code></pre>
-<pre><code>## &#39;data.frame&#39;:    105 obs. of  8 variables:
-##  $ message       : chr  &quot;這次我和愛玩客到了日本山形為大家祈福，還沒看過的朋友現在可以在Youtube 上看到啦！\n\n祝大家雞年行大運\xed&lt;U+00A0&gt;&lt;U+00BD&gt;\xed&lt;U+&quot;| __truncated__ &quot;愛玩客首播！&quot; &quot;愛玩客首播！&quot; &quot;飛出雲海的那刻，我就把那些自己不喜歡卻還是犯賤放在心裡的事情拋開了，隨著水分子凝結化成了雪留在那沒人認識我的山谷裡。\n\n山形的&quot;| __truncated__ ...
-##  $ created_time  : chr  &quot;2017-01-27T15:00:11+0000&quot; &quot;2017-01-25T14:49:30+0000&quot; &quot;2017-01-25T13:44:37+0000&quot; &quot;2017-01-25T13:00:06+0000&quot; ...
-##  $ type          : chr  &quot;video&quot; &quot;video&quot; &quot;video&quot; &quot;photo&quot; ...
-##  $ story         : chr  NA &quot;Peter Su was live.&quot; &quot;Peter Su was live.&quot; &quot;Peter Su added 2 new photos.&quot; ...
-##  $ likes_count   : num  693 1052 912 1949 13206 ...
-##  $ comments_count: num  7 375 205 8 161 30 0 8 67 76 ...
-##  $ shares_count  : num  9 2 8 20 1285 ...
-##  $ time          : chr  &quot;15&quot; &quot;14&quot; &quot;13&quot; &quot;13&quot; ...</code></pre>
+<pre><code>## &#39;data.frame&#39;:    114 obs. of  8 variables:
+##  $ message       : chr  &quot;Bye bye YAP! Heading back to Palau. 再見了雅浦，下次會再回來看你的！回帛琉繼續。\n\n#雅浦群島 #拍攝週三愛玩客&quot; &quot;我們之間的友誼之所以無可取代，並不總是永遠陪在身邊，而是即使隔得再遠也可以透過許多方式彼此分享，從不會因為距離而感到害怕，正因&quot;| __truncated__ &quot;旅行本身是無狀態的，只有你能賦予它那獨一無二的意義，和別人說得沒有關係。\n\n能將喜歡的旅行融入生活裡，真的是一件很幸福的事啊！\&quot;| __truncated__ &quot;堅強的人，不是不會哭，只是比其他人更會隱藏那些情緒，一個人在沒人看得見地方發洩，哭完之後依然重新整理表情，明天繼續出發。\n\n我&quot;| __truncated__ ...
+##  $ created_time  : chr  &quot;2017-01-14T14:08:58+0000&quot; &quot;2017-01-12T13:37:52+0000&quot; &quot;2017-01-10T13:07:34+0000&quot; &quot;2017-01-09T14:10:15+0000&quot; ...
+##  $ type          : chr  &quot;photo&quot; &quot;photo&quot; &quot;photo&quot; &quot;link&quot; ...
+##  $ story         : chr  NA NA NA NA ...
+##  $ likes_count   : num  3089 11688 4932 11321 4938 ...
+##  $ comments_count: num  6 463 11 57 13 9 8 67 35 7 ...
+##  $ shares_count  : num  5 648 58 769 78 57 15 481 234 9 ...
+##  $ time          : chr  &quot;14&quot; &quot;13&quot; &quot;13&quot; &quot;14&quot; ...</code></pre>
 </div>
 <div class="section level2">
 <h2>分析議題&amp;結果</h2>
-<p>假設:按讚數.分享數.留言數量越多表示有較高的互動,能帶來的商機.關注也越高 ### 1.發文附圖的重要性 “發文不附圖 此風不可長”就算圖文不符,發文附圖才能引起關注 風靡全球的Instagram,其特色就是先以圖片引人注意接著看到下方的文字內容.</p>
+<p>假設:按讚數.分享數.留言數量越多表示有較高的互動,能帶來的商機.關注也越高 ### 1.發文附圖的重要性</p>
+<ul>
+<li>“發文不附圖 此風不可長”就算圖文不符,發文附圖才能引起關注</li>
+<li>風靡全球的Instagram,其特色就是先以圖片引人注意接著看到下方的文字內容.</li>
+</ul>
 <pre class="r"><code>#install.packages(&quot;ggplot2&quot;)
 library(ggplot2)</code></pre>
 <pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.3.3</code></pre>
@@ -206,11 +221,11 @@ dotchart(as.numeric(totalPage$time))</code></pre>
 <div class="section level3">
 <h3>不同發文類型的關注度</h3>
 <pre class="r"><code>mean(totalPage$likes_count)  #平均每篇貼文的讚數</code></pre>
-<pre><code>## [1] 7144.438</code></pre>
+<pre><code>## [1] 7097.316</code></pre>
 <pre class="r"><code>mean(totalPage$comments_count) #下方留言平均數</code></pre>
-<pre><code>## [1] 57.54286</code></pre>
+<pre><code>## [1] 58.5614</code></pre>
 <pre class="r"><code>mean(totalPage$shares_count) # 分享次篇貼文的次數</code></pre>
-<pre><code>## [1] 354.1048</code></pre>
+<pre><code>## [1] 345.2193</code></pre>
 <pre class="r"><code>range(totalPage$shares_count)</code></pre>
 <pre><code>## [1]    0 1589</code></pre>
 <pre class="r"><code>library(dplyr)</code></pre>
@@ -234,9 +249,9 @@ totalpage_test %&gt;%
 <pre><code>## # A tibble: 3 × 4
 ##    type num_likes num_comment num_share
 ##   &lt;chr&gt;     &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;
-## 1 photo  8090.628    58.92308  381.8974
-## 2  link  6986.182    49.36364  545.6364
-## 3 video  2640.562    56.43750   86.9375</code></pre>
+## 1 photo  7891.570    60.15116  362.7093
+## 2  link  7347.417    50.00000  564.2500
+## 3 video  2640.625    56.43750   86.9375</code></pre>
 </div>
 </div>
 <div id="-" class="section level2">
@@ -292,91 +307,85 @@ totalPage$message&lt;- enc2utf8(totalPage$message)
 totalPage$message&lt;- totalPage$message[Encoding(totalPage$message)!=&#39;unknown&#39;]
 head(segmentCN(totalPage$message))</code></pre>
 <pre><code>## [[1]]
-##  [1] &quot;這次&quot;    &quot;我&quot;      &quot;和&quot;      &quot;愛&quot;      &quot;玩&quot;      &quot;客&quot;      &quot;到&quot;     
-##  [8] &quot;了&quot;      &quot;日本&quot;    &quot;山&quot;      &quot;形&quot;      &quot;為&quot;      &quot;大家&quot;    &quot;祈福&quot;   
-## [15] &quot;還&quot;      &quot;沒&quot;      &quot;看&quot;      &quot;過&quot;      &quot;的&quot;      &quot;朋友&quot;    &quot;現在&quot;   
-## [22] &quot;可以&quot;    &quot;在&quot;      &quot;Youtube&quot; &quot;上&quot;      &quot;看到&quot;    &quot;啦&quot;      &quot;祝&quot;     
-## [29] &quot;大家&quot;    &quot;雞年&quot;    &quot;行&quot;      &quot;大&quot;      &quot;運&quot;      &quot;&lt;U+653C&gt;&quot; &quot;&lt;U+613C&gt;&quot;
-## [36] &quot;&lt;U+623C&gt;&quot; &quot;&lt;U+653C&gt;&quot; &quot;&lt;U+623C&gt;&quot; &quot;大&quot;      &quot;雞&quot;      &quot;大&quot;      &quot;利&quot;     
-## [43] &quot;&lt;U+653C&gt;&quot; &quot;&lt;U+613C&gt;&quot; &quot;&lt;U+623C&gt;&quot; &quot;&lt;U+653C&gt;&quot; &quot;&lt;U+623C&gt;&quot; &quot;印&quot;      &quot;鈔&quot;     
-## [50] &quot;雞&quot;      &quot;&lt;U+653C&gt;&quot; &quot;&lt;U+613C&gt;&quot; &quot;&lt;U+623C&gt;&quot; &quot;&lt;U+653C&gt;&quot; &quot;&lt;U+623C&gt;&quot; &quot;https&quot;  
-## [57] &quot;www&quot;     &quot;youtube&quot; &quot;com&quot;     &quot;watch&quot;   &quot;v&quot;       &quot;FcxAIog&quot; &quot;5&quot;      
-## [64] &quot;cEw&quot;     &quot;feature&quot; &quot;youtu&quot;   &quot;be&quot;     
+##  [1] &quot;Bye&quot;     &quot;bye&quot;     &quot;YAP&quot;     &quot;Heading&quot; &quot;back&quot;    &quot;to&quot;      &quot;Palau&quot;  
+##  [8] &quot;再&quot;      &quot;見&quot;      &quot;了&quot;      &quot;雅&quot;      &quot;浦&quot;      &quot;下次&quot;    &quot;會&quot;     
+## [15] &quot;再&quot;      &quot;回&quot;      &quot;來&quot;      &quot;看&quot;      &quot;你&quot;      &quot;的&quot;      &quot;回&quot;     
+## [22] &quot;帛&quot;      &quot;琉&quot;      &quot;繼續&quot;    &quot;雅&quot;      &quot;浦&quot;      &quot;群島&quot;    &quot;拍攝&quot;   
+## [29] &quot;週&quot;      &quot;三&quot;      &quot;愛&quot;      &quot;玩&quot;      &quot;客&quot;     
 ## 
 ## [[2]]
-## [1] &quot;愛&quot;   &quot;玩&quot;   &quot;客&quot;   &quot;首播&quot;
+##  [1] &quot;我們&quot;      &quot;之間&quot;      &quot;的&quot;        &quot;友誼&quot;      &quot;之所以&quot;   
+##  [6] &quot;無可&quot;      &quot;取代&quot;      &quot;並&quot;        &quot;不&quot;        &quot;總是&quot;     
+## [11] &quot;永遠&quot;      &quot;陪&quot;        &quot;在&quot;        &quot;身邊&quot;      &quot;而是&quot;     
+## [16] &quot;即使&quot;      &quot;隔&quot;        &quot;得&quot;        &quot;再&quot;        &quot;遠&quot;       
+## [21] &quot;也&quot;        &quot;可以&quot;      &quot;透過&quot;      &quot;許多&quot;      &quot;方式&quot;     
+## [26] &quot;彼此&quot;      &quot;分享&quot;      &quot;從不&quot;      &quot;會&quot;        &quot;因為&quot;     
+## [31] &quot;距離&quot;      &quot;而&quot;        &quot;感到&quot;      &quot;害怕&quot;      &quot;正&quot;       
+## [36] &quot;因為&quot;      &quot;還&quot;        &quot;有&quot;        &quot;你&quot;        &quot;才&quot;       
+## [41] &quot;變&quot;        &quot;得&quot;        &quot;更加&quot;      &quot;勇敢&quot;      &quot;Instagram&quot;
+## [46] &quot;peter&quot;     &quot;825&quot;      
 ## 
 ## [[3]]
-## [1] &quot;愛&quot;   &quot;玩&quot;   &quot;客&quot;   &quot;首播&quot;
+##  [1] &quot;旅行&quot;      &quot;本身&quot;      &quot;是&quot;        &quot;無&quot;        &quot;狀態&quot;     
+##  [6] &quot;的&quot;        &quot;只有&quot;      &quot;你&quot;        &quot;能&quot;        &quot;賦予&quot;     
+## [11] &quot;它&quot;        &quot;那&quot;        &quot;獨一無二&quot;  &quot;的&quot;        &quot;意義&quot;     
+## [16] &quot;和&quot;        &quot;別人&quot;      &quot;說&quot;        &quot;得&quot;        &quot;沒有&quot;     
+## [21] &quot;關係&quot;      &quot;能&quot;        &quot;將&quot;        &quot;喜歡&quot;      &quot;的&quot;       
+## [26] &quot;旅行&quot;      &quot;融入&quot;      &quot;生活&quot;      &quot;裡&quot;        &quot;真的&quot;     
+## [31] &quot;是&quot;        &quot;一件&quot;      &quot;很&quot;        &quot;幸福&quot;      &quot;的&quot;       
+## [36] &quot;事&quot;        &quot;啊&quot;        &quot;拍攝&quot;      &quot;週&quot;        &quot;三&quot;       
+## [41] &quot;愛&quot;        &quot;玩&quot;        &quot;客&quot;        &quot;帛&quot;        &quot;琉&quot;       
+## [46] &quot;Instagram&quot; &quot;peter&quot;     &quot;825&quot;      
 ## 
 ## [[4]]
-##  [1] &quot;飛&quot;        &quot;出&quot;        &quot;雲海&quot;      &quot;的&quot;        &quot;那&quot;       
-##  [6] &quot;刻&quot;        &quot;我&quot;        &quot;就&quot;        &quot;把&quot;        &quot;那些&quot;     
-## [11] &quot;自己&quot;      &quot;不喜歡&quot;    &quot;卻&quot;        &quot;還&quot;        &quot;是&quot;       
-## [16] &quot;犯&quot;        &quot;賤&quot;        &quot;放在&quot;      &quot;心裡&quot;      &quot;的&quot;       
-## [21] &quot;事情&quot;      &quot;拋開&quot;      &quot;了&quot;        &quot;隨&quot;        &quot;著&quot;       
-## [26] &quot;水&quot;        &quot;分子&quot;      &quot;凝結&quot;      &quot;化&quot;        &quot;成&quot;       
-## [31] &quot;了&quot;        &quot;雪&quot;        &quot;留&quot;        &quot;在&quot;        &quot;那&quot;       
-## [36] &quot;沒&quot;        &quot;人&quot;        &quot;認識&quot;      &quot;我&quot;        &quot;的&quot;       
-## [41] &quot;山谷&quot;      &quot;裡&quot;        &quot;山&quot;        &quot;形&quot;        &quot;的&quot;       
-## [46] &quot;大地&quot;      &quot;有&quot;        &quot;著&quot;        &quot;無限&quot;      &quot;的&quot;       
-## [51] &quot;寬容&quot;      &quot;讓&quot;        &quot;人&quot;        &quot;可以&quot;      &quot;將&quot;       
-## [56] &quot;一些&quot;      &quot;東西&quot;      &quot;滯留&quot;      &quot;在&quot;        &quot;那&quot;       
-## [61] &quot;希望&quot;      &quot;這&quot;        &quot;一輩子&quot;    &quot;都&quot;        &quot;不用&quot;     
-## [66] &quot;再&quot;        &quot;贖回&quot;      &quot;我們&quot;      &quot;等等&quot;      &quot;十點&quot;     
-## [71] &quot;愛&quot;        &quot;玩&quot;        &quot;客&quot;        &quot;見&quot;        &quot;Instagram&quot;
-## [76] &quot;peter&quot;     &quot;825&quot;      
+##  [1] &quot;堅強&quot;      &quot;的&quot;        &quot;人&quot;        &quot;不&quot;        &quot;是&quot;       
+##  [6] &quot;不&quot;        &quot;會&quot;        &quot;哭&quot;        &quot;只&quot;        &quot;是&quot;       
+## [11] &quot;比&quot;        &quot;其他&quot;      &quot;人&quot;        &quot;更&quot;        &quot;會&quot;       
+## [16] &quot;隱藏&quot;      &quot;那些&quot;      &quot;情&quot;        &quot;緒&quot;        &quot;一個&quot;     
+## [21] &quot;人&quot;        &quot;在&quot;        &quot;沒&quot;        &quot;人&quot;        &quot;看得見&quot;   
+## [26] &quot;地方&quot;      &quot;發&quot;        &quot;洩&quot;        &quot;哭&quot;        &quot;完&quot;       
+## [31] &quot;之&quot;        &quot;後&quot;        &quot;依然&quot;      &quot;重新&quot;      &quot;整理&quot;     
+## [36] &quot;表情&quot;      &quot;明天&quot;      &quot;繼續&quot;      &quot;出發&quot;      &quot;我&quot;       
+## [41] &quot;與&quot;        &quot;我&quot;        &quot;的&quot;        &quot;孤獨&quot;      &quot;雖&quot;       
+## [46] &quot;敗&quot;        &quot;猶&quot;        &quot;榮&quot;        &quot;Instagram&quot; &quot;peter&quot;    
+## [51] &quot;825&quot;      
 ## 
 ## [[5]]
-##   [1] &quot;我&quot;        &quot;在&quot;        &quot;書&quot;        &quot;裡&quot;        &quot;有&quot;       
-##   [6] &quot;句&quot;        &quot;話&quot;        &quot;是&quot;        &quot;這麼&quot;      &quot;說&quot;       
-##  [11] &quot;的&quot;        &quot;朋友&quot;      &quot;忽略&quot;      &quot;你&quot;        &quot;時&quot;       
-##  [16] &quot;不要&quot;      &quot;傷心&quot;      &quot;每個&quot;      &quot;人&quot;        &quot;都&quot;       
-##  [21] &quot;有&quot;        &quot;自己&quot;      &quot;的&quot;        &quot;生活&quot;      &quot;誰&quot;       
-##  [26] &quot;都&quot;        &quot;不&quot;        &quot;可能&quot;      &quot;一直&quot;      &quot;陪&quot;       
-##  [31] &quot;著&quot;        &quot;你&quot;        &quot;不要&quot;      &quot;過&quot;        &quot;份&quot;       
-##  [36] &quot;地&quot;        &quot;去&quot;        &quot;猜測&quot;      &quot;身邊&quot;      &quot;的&quot;       
-##  [41] &quot;人&quot;        &quot;對&quot;        &quot;你&quot;        &quot;是否&quot;      &quot;真心&quot;     
-##  [46] &quot;也&quot;        &quot;不要&quot;      &quot;過&quot;        &quot;份&quot;        &quot;地&quot;       
-##  [51] &quot;去&quot;        &quot;預設&quot;      &quot;對方&quot;      &quot;的&quot;        &quot;立場&quot;     
-##  [56] &quot;想&quot;        &quot;得&quot;        &quot;太&quot;        &quot;多只&quot;      &quot;會&quot;       
-##  [61] &quot;毀&quot;        &quot;了&quot;        &quot;自己&quot;      &quot;嚴重&quot;      &quot;的&quot;       
-##  [66] &quot;更&quot;        &quot;可能&quot;      &quot;破壞&quot;      &quot;掉&quot;        &quot;彼此&quot;     
-##  [71] &quot;辛苦&quot;      &quot;建立&quot;      &quot;的&quot;        &quot;感情&quot;      &quot;每個&quot;     
-##  [76] &quot;人&quot;        &quot;都&quot;        &quot;有&quot;        &quot;自己&quot;      &quot;的&quot;       
-##  [81] &quot;人生&quot;      &quot;要&quot;        &quot;過&quot;        &quot;有時候&quot;    &quot;不&quot;       
-##  [86] &quot;是&quot;        &quot;對方&quot;      &quot;忽略&quot;      &quot;了&quot;        &quot;你&quot;       
-##  [91] &quot;或許&quot;      &quot;是&quot;        &quot;自己&quot;      &quot;太&quot;        &quot;閒&quot;       
-##  [96] &quot;了&quot;        &quot;今天&quot;      &quot;晚上&quot;      &quot;9&quot;         &quot;45&quot;       
-## [101] &quot;我們&quot;      &quot;直播&quot;      &quot;見&quot;        &quot;囉&quot;        &quot;Instagram&quot;
-## [106] &quot;peter&quot;     &quot;825&quot;      
+##  [1] &quot;曾經&quot;      &quot;夢想&quot;      &quot;著&quot;        &quot;像&quot;        &quot;電影&quot;     
+##  [6] &quot;一樣&quot;      &quot;抬&quot;        &quot;著&quot;        &quot;頭等&quot;      &quot;著&quot;       
+## [11] &quot;雪&quot;        &quot;降落&quot;      &quot;在&quot;        &quot;臉上&quot;      &quot;長大&quot;     
+## [16] &quot;後&quot;        &quot;有&quot;        &quot;了&quot;        &quot;機會&quot;      &quot;遇見&quot;     
+## [21] &quot;雪&quot;        &quot;觸&quot;        &quot;碰到&quot;      &quot;時&quot;        &quot;才&quot;       
+## [26] &quot;驚&quot;        &quot;覺&quot;        &quot;原來&quot;      &quot;只&quot;        &quot;要&quot;       
+## [31] &quot;將&quot;        &quot;它&quot;        &quot;埋&quot;        &quot;進&quot;        &quot;心中&quot;     
+## [36] &quot;相信&quot;      &quot;它&quot;        &quot;試圖&quot;      &quot;去&quot;        &quot;接近&quot;     
+## [41] &quot;它&quot;        &quot;有一天&quot;    &quot;夢想&quot;      &quot;還&quot;        &quot;是&quot;       
+## [46] &quot;會&quot;        &quot;緩緩&quot;      &quot;地&quot;        &quot;降落&quot;      &quot;在&quot;       
+## [51] &quot;你&quot;        &quot;身上&quot;      &quot;Instagram&quot; &quot;peter&quot;     &quot;825&quot;      
 ## 
 ## [[6]]
-##  [1] &quot;沒有&quot;        &quot;缺陷&quot;        &quot;的&quot;          &quot;朋友&quot;        &quot;是&quot;         
-##  [6] &quot;很&quot;          &quot;難&quot;          &quot;找&quot;          &quot;到&quot;          &quot;的&quot;         
-## [11] &quot;但&quot;          &quot;也&quot;          &quot;正&quot;          &quot;因為&quot;        &quot;如此&quot;       
-## [16] &quot;我們&quot;        &quot;看透&quot;        &quot;了&quot;          &quot;彼此&quot;        &quot;卻&quot;         
-## [21] &quot;依然&quot;        &quot;站&quot;          &quot;在&quot;          &quot;對方&quot;        &quot;身旁&quot;       
-## [26] &quot;我&quot;          &quot;想&quot;          &quot;這&quot;          &quot;就&quot;          &quot;是&quot;         
-## [31] &quot;最&quot;          &quot;溫柔&quot;        &quot;的&quot;          &quot;陪伴&quot;        &quot;明天&quot;       
-## [36] &quot;晚上&quot;        &quot;10點&quot;        &quot;愛&quot;          &quot;玩&quot;          &quot;客&quot;         
-## [41] &quot;首播&quot;        &quot;我&quot;          &quot;會&quot;          &quot;在&quot;          &quot;21&quot;         
-## [46] &quot;45線&quot;        &quot;上&quot;          &quot;直播&quot;        &quot;和&quot;          &quot;大家&quot;       
-## [51] &quot;先&quot;          &quot;來&quot;          &quot;聊聊&quot;        &quot;看&quot;          &quot;節目&quot;       
-## [56] &quot;啊&quot;          &quot;明天&quot;        &quot;見&quot;          &quot;了&quot;          &quot;首集&quot;       
-## [61] &quot;預告&quot;        &quot;https&quot;       &quot;youtu&quot;       &quot;be&quot;          &quot;PLapUNAsqEU&quot;
-## [66] &quot;Instagram&quot;   &quot;peter&quot;       &quot;825&quot;</code></pre>
+##  [1] &quot;那天&quot;      &quot;忽然&quot;      &quot;一陣&quot;      &quot;大&quot;        &quot;雨&quot;       
+##  [6] &quot;淋&quot;        &quot;濕&quot;        &quot;了&quot;        &quot;我們&quot;      &quot;回頭&quot;     
+## [11] &quot;看&quot;        &quot;了&quot;        &quot;一下&quot;      &quot;才&quot;        &quot;想起&quot;     
+## [16] &quot;自己&quot;      &quot;都&quot;        &quot;忘&quot;        &quot;了&quot;        &quot;小時候&quot;   
+## [21] &quot;最&quot;        &quot;喜歡&quot;      &quot;走&quot;        &quot;的&quot;        &quot;那段&quot;     
+## [26] &quot;雨&quot;        &quot;後&quot;        &quot;泥濘&quot;      &quot;路上&quot;      &quot;是&quot;       
+## [31] &quot;多麼&quot;      &quot;的&quot;        &quot;簡單&quot;      &quot;而&quot;        &quot;快樂&quot;     
+## [36] &quot;攝&quot;        &quot;於&quot;        &quot;帛&quot;        &quot;琉&quot;        &quot;卡&quot;       
+## [41] &quot;漾&quot;        &quot;島&quot;        &quot;拍攝&quot;      &quot;週&quot;        &quot;三&quot;       
+## [46] &quot;愛&quot;        &quot;玩&quot;        &quot;客&quot;        &quot;instagram&quot; &quot;peter&quot;    
+## [51] &quot;825&quot;</code></pre>
 <pre class="r"><code>d&lt;-data.frame(table(unlist(segmentCN(totalPage$message))),decreasing =T)
 names(d)&lt;-c(&quot;word&quot;,&quot;freq&quot;)
 d$word&lt;-as.character(d$word)
 wordcloud2(d[!d$word %in% my.stopwords &amp; d$freq&gt;5 &amp; nchar(d$word)&gt;1,], 
            fontFamily = &quot;Microsoft JhengHei&quot;, minRotation = -pi/2, maxRotation = -pi/2)</code></pre>
-<p><div id="htmlwidget-ed761f915be2105878b5" style="width:672px;height:480px;" class="wordcloud2 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ed761f915be2105878b5">{"x":{"word":["bossini","Instagram","MO","PeterSu","Weibo","一段","一個","一起","一樣","十點","大家","不再","什麼","今天","日子","世界","出發","永遠","生命","生活","因為","地方","有人","你們","希望","快樂","我們","沒有","事情","其實","或許","朋友","狀態","知道","長大","很多","相信","看看","美好","美麗","面對","首播","旅行","時候","時間","海洋","真的","討厭","停止","晚上","現在","這次","這個","這樣","陪伴","喜歡","曾經","森林","無法","無論","發生","路上","夢想","對方","認識","需要","靜靜的","離開","關係","願意"],"freq":[9,69,9,8,7,8,21,41,7,7,11,9,16,12,6,32,13,14,7,7,15,7,6,8,8,6,33,20,7,7,12,13,7,7,8,9,6,9,6,6,8,6,30,10,9,6,7,6,7,13,7,9,7,9,9,22,6,7,9,9,7,7,6,7,7,6,6,9,9,6],"fontFamily":"Microsoft JhengHei","fontWeight":"bold","color":"random-dark","minSize":0,"weightFactor":2.60869565217391,"backgroundColor":"white","gridSize":0,"minRotation":-1.5707963267949,"maxRotation":-1.5707963267949,"shuffle":true,"rotateRatio":0.4,"shape":"circle","ellipticity":0.65,"figBase64":null,"hover":null},"evals":[],"jsHooks":{"render":[{"code":"function(el,x){\n                        console.log(123);\n                        if(!iii){\n                          window.location.reload();\n                          iii = False;\n\n                        }\n  }","data":null}]}}</script> <img src="https://drive.google.com/open?id=0Bwv7NFD7P2fyUzZOSkVCWDJKaEU" alt="wordcloud2" /></p>
+<p><div id="htmlwidget-d1171d75f3b8b2803b1f" style="width:672px;height:480px;" class="wordcloud2 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d1171d75f3b8b2803b1f">{"x":{"word":["bossini","Instagram","MO","PeterSu","Weibo","一件","一段","一個","一起","一樣","十點","下次","大家","不再","什麼","今天","分享","方式","日子","世界","出發","永遠","生命","生活","因為","地方","有人","至少","你們","希望","快樂","我們","沒有","身邊","事情","其實","或許","朋友","狀態","知道","長大","很多","活動","相信","看看","美好","美麗","面對","首播","旅行","時候","時間","海洋","真的","討厭","停止","晚上","現在","許多","這次","這個","這樣","陪伴","喜歡","曾經","森林","無法","無論","發生","感受","路上","夢想","對方","認識","需要","靜靜的","離開","關係","願意"],"freq":[9,75,9,8,7,6,8,25,42,9,7,6,11,9,16,12,7,6,6,34,14,15,8,9,18,8,6,6,8,9,7,38,21,6,7,7,12,14,9,7,9,9,6,7,10,10,6,8,7,33,12,12,6,9,6,7,15,7,6,10,7,9,9,25,7,7,11,10,8,7,8,8,7,7,6,6,9,10,6],"fontFamily":"Microsoft JhengHei","fontWeight":"bold","color":"random-dark","minSize":0,"weightFactor":2.4,"backgroundColor":"white","gridSize":0,"minRotation":-1.5707963267949,"maxRotation":-1.5707963267949,"shuffle":true,"rotateRatio":0.4,"shape":"circle","ellipticity":0.65,"figBase64":null,"hover":null},"evals":[],"jsHooks":{"render":[{"code":"function(el,x){\n                        console.log(123);\n                        if(!iii){\n                          window.location.reload();\n                          iii = False;\n\n                        }\n  }","data":null}]}}</script> <img src="https://drive.google.com/open?id=0Bwv7NFD7P2fyUzZOSkVCWDJKaEU" alt="wordcloud2" /></p>
 </div>
 <div class="section level2">
 <h2>分析結果可能解決的問題</h2>
-<p>-究竟是甚麼題材內容能夠讓大眾深深被吸引,造成一股旋風. -或許就如“看到的人會幸福吧”的概念,勵志書以作者真實的經驗來幫讀者找到抒發情緒的出口，陪同讀者走過低潮 -一眼抓住讀者目光的詞彙 -從中可以察覺到出書代言葉配的商機並非偶然</p>
+<p><em>究竟是甚麼題材內容能夠讓大眾深深被吸引,造成一股旋風. </em>或許就如“看到的人會幸福吧”的概念,勵志書以作者真實的經驗來幫讀者找到抒發情緒的出口，陪同讀者走過低潮 <em>一眼抓住讀者目光的詞彙 </em>從中可以察覺到出書代言葉配的商機並非偶然</p>
 </div>
 <div class="section level2">
 <h2>組員名單與分工</h2>
